@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=dev
+Group=www-data
+WorkingDirectory=/home/dev/AmazonMerch
+ExecStart=/home/dev/AmazonMerch/AmazonMerch/bin/gunicorn --workers 3 --bind unix:/home/dev/AmazonMerch/AmazonMerch.sock AmazonMerch.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
